@@ -1,0 +1,118 @@
+// COLORS
+$white: hsl(0, 0, 100%);
+$backgroundColor: hsl(240, 67%, 8%);
+$blueGrey: hsl(240, 17%, 26%);
+$grey: hsl(240, 6%, 54%);
+$lightBlue: hsl(194, 48%, 49%);
+$darkYellow: hsl(33, 82%, 61%);
+$purple: hsl(263, 67%, 51%);
+$lightRed: hsl(10, 63%, 51%);
+$red: hsl(2, 68%, 53%);
+$orange: hsl(20, 7%, 17%);
+$lightGreen: hsl(169, 73%, 44%);
+$blue: hsl(222, 87%, 56%);
+
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Antonio', sans-serif;
+    font-family: 'Spartan', sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-image: url('../assets/background-stars.svg');
+    position: relative;
+    background-size: 300%;
+    background-repeat: repeat;
+    background-position: center;
+    top: 0;
+    left: 0;
+    background-color: #070724;
+}
+
+/* TYPOGRAPHY */
+:root {
+    // Font Size - Mobile
+        --heading-mobile: 4rem;
+        --paragraph-mobile: 1.1rem;
+
+    // Font Size - Tablet
+        --heading-secondary-tablet: 4.8rem;
+
+    /* Font Size - Desktop */
+        --heading: 8rem;
+        --heading-secondary: 4rem;
+        --heading-tertiary: 1.2rem;
+        --heading-quarternary: 1.1rem;
+        --paragraph: 1.4rem;
+}
+
+h1, h2, h3, h4, p, li, ul, span, a, button {
+    color: $white;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+h1 {
+    font-family: 'Antonio', sans-serif;
+    font-size: var(--heading);
+    line-height: 10.3rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: 'Antonio', sans-serif;
+    font-size: var(--heading-secondary);
+    line-height: 5.2rem;
+    letter-spacing: -0.15rem;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-family: 'Spartan', sans-serif;
+    font-size: var(--heading-tertiary);
+    line-height: 2.5rem;
+    letter-spacing: 0.26rem;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-family: 'Spartan', sans-serif;
+    font-size: var(--heading-quarternary);
+    line-height: 2.5rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+p {
+    font-family: 'Spartan', sans-serif;
+    font-size: var(--paragraph);
+    line-height: 2.5rem;
+}
+
+ul {
+    cursor: pointer;
+}
+
+// Visibility 
+.hide-for-mobile {
+    display: none;
+    // @include breakpoint-down(small){
+    //     display: none;
+    // }
+}
+
+// .hide-for-desktop {
+    // @include breakpoint-up(large) {
+    //     display: none;
+    // }
+// }
+
+.active {
+    display: block;
+}

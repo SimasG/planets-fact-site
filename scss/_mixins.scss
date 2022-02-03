@@ -1,0 +1,28 @@
+@media (min-width: 102.4em) {
+    // styles go here
+}
+
+// creating a sass map
+
+// 768px, 1024px, 1400px
+// targeting "this viewport and up"
+// $breakpoints-up: ("medium": "76.8em", "large": "102.4em", "xlarge": "140em");
+// $breakpoints-up: ("medium": "768px", "large": "1024px", "xlarge": "1400px");
+
+
+// 767px, 1023px, 1399px
+// targeting "this viewport and down"
+// $breakpoints-down: ("small": "76.7em", "medium": "102.3em", "large": "139.9em");
+// $breakpoints-down: ("small": "767px", "medium": "1023px", "large": "1399px");
+
+@mixin breakpoint-up($size) {
+    @media (min-width: map-get($breakpoints-up, $size)){
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media (max-width: map-get($breakpoints-down, $size)){
+        @content;
+    }
+}

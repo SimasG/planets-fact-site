@@ -1,0 +1,812 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Antonio', sans-serif;
+  font-family: 'Spartan', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background-image: url("../assets/background-stars.svg");
+  position: relative;
+  background-size: 300%;
+  background-repeat: repeat;
+  background-position: center;
+  top: 0;
+  left: 0;
+  background-color: #070724;
+}
+
+/* TYPOGRAPHY */
+:root {
+  --heading-mobile: 4rem;
+  --paragraph-mobile: 1.1rem;
+  --heading-secondary-tablet: 4.8rem;
+  /* Font Size - Desktop */
+  --heading: 8rem;
+  --heading-secondary: 4rem;
+  --heading-tertiary: 1.2rem;
+  --heading-quarternary: 1.1rem;
+  --paragraph: 1.4rem;
+}
+
+h1, h2, h3, h4, p, li, ul, span, a, button {
+  color: white;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'Antonio', sans-serif;
+  font-size: var(--heading);
+  line-height: 10.3rem;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: 'Antonio', sans-serif;
+  font-size: var(--heading-secondary);
+  line-height: 5.2rem;
+  letter-spacing: -0.15rem;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: 'Spartan', sans-serif;
+  font-size: var(--heading-tertiary);
+  line-height: 2.5rem;
+  letter-spacing: 0.26rem;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-family: 'Spartan', sans-serif;
+  font-size: var(--heading-quarternary);
+  line-height: 2.5rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: 'Spartan', sans-serif;
+  font-size: var(--paragraph);
+  line-height: 2.5rem;
+}
+
+ul {
+  cursor: pointer;
+}
+
+.hide-for-mobile {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.header {
+  padding: 2.4rem;
+}
+
+.header .header__nav-container .header__nav-container-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header__nav-container .header__nav-container-child.active {
+  display: none;
+}
+
+.header .header__nav-container .header__nav-container-child .header__logo {
+  font-family: 'Antonio', sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: -0.105rem;
+  text-transform: uppercase;
+}
+
+.header .header__nav-container .header__nav-container-child .header__logo.active {
+  z-index: 100;
+}
+
+.header .header__nav-container .header__nav-container-child .header__toggle {
+  height: 1.8rem;
+}
+
+.header .header__nav-container .header__nav-container-child .header__toggle.active {
+  color: #979797;
+  opacity: 0.3;
+  z-index: 100;
+}
+
+.header .header__nav-container .header__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #070722;
+  display: none;
+  overflow: hidden;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav {
+  position: fixed;
+  width: 100%;
+  padding: 0 2.4rem 6.7rem 2.4rem;
+  top: 11.3rem;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item {
+  display: -ms-grid;
+  display: grid;
+  justify-items: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: 4fr 20fr 1.5fr;
+      grid-template-columns: 4fr 20fr 1.5fr;
+  -ms-grid-rows: 1 1fr;
+      grid-template-rows: 1 1fr;
+      grid-template-areas: "icon planet-name arrow";
+  padding: 2.4rem 0;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item .planet-icon {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 90px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: icon;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item #mercury {
+  background: #DEF4FC;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item #venus {
+  background: #F7CC7F;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item #earth {
+  background: #545BFE;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item #mars {
+  background: #FF6A45;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item #jupiter {
+  background: #ECAD7A;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item #saturn {
+  background: #FCCB6B;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item #uranus {
+  background: #65F0D5;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item #neptune {
+  background: #497EFA;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item .planet-name.mobile {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: planet-name;
+  font-family: 'Spartan', sans-serif;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.136rem;
+  height: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  -ms-grid-column-align: start;
+      justify-self: start;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item .menu-arrow {
+  width: 0.04rem;
+  height: 0.08rem;
+  border: solid #D8D8D8;
+  border-width: 0 0.2rem 0.2rem 0;
+  opacity: 0.5;
+  display: inline-block;
+  padding: 0.3rem;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform 0.3s linear;
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  background: none;
+  cursor: pointer;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: arrow;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item:first-child {
+  padding-top: 0;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__menu-item:last-child {
+  padding-bottom: 0;
+}
+
+.header .header__nav-container .header__menu .header__menu-nav .header__hr {
+  width: 100%;
+  height: 1px;
+  background: #979797;
+  opacity: 0.3;
+}
+
+.header .header__nav-container .header__menu.active {
+  display: block;
+}
+
+.header .header__underline {
+  height: 1px;
+  width: 100%;
+  color: #979797;
+  opacity: 0.3;
+  display: none;
+}
+
+.header .header__underline.active {
+  z-index: 1000;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 2.9rem 2.4rem;
+    border-bottom: 1px solid rgba(151, 151, 151, 0.3);
+  }
+  .header .header__nav-container .header__nav-container-child {
+    text-align: center;
+    display: block;
+    border-bottom: none;
+  }
+  .header .header__nav-container .header__logo {
+    margin: 0 auto;
+  }
+  .header .header__nav-container .header__toggle {
+    display: none;
+  }
+  .header .header__nav-container .header__links {
+    padding: 4rem 4rem 0 4rem;
+    display: block;
+  }
+  .header .header__nav-container .header__links .header__links-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .header .header__nav-container .header__links .planet-name {
+    position: relative;
+    font-family: 'Spartan', sans-serif;
+    font-size: var(--heading-quarternary);
+    line-height: 2.5rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.6;
+  }
+  .header .header__nav-container .header__links .planet-name:hover {
+    opacity: 1;
+    -webkit-transition: opacity ease-in-out 0.5s;
+    transition: opacity ease-in-out 0.5s;
+  }
+  .header .header__nav-container .header__underline {
+    display: none;
+    width: 100%;
+    height: 0.1rem;
+    background: #979797;
+    opacity: 0.3;
+  }
+}
+
+@media (min-width: 1300px) {
+  .header {
+    padding: 2.45rem 4rem 2.45rem 3.2rem;
+  }
+  .header .header__nav-container {
+    display: -ms-grid;
+    display: grid;
+    justify-items: start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-grid-columns: 2fr 2fr;
+        grid-template-columns: 2fr 2fr;
+    -ms-grid-rows: 1 1fr;
+        grid-template-rows: 1 1fr;
+  }
+  .header .header__nav-container .header__links {
+    margin-bottom: -1rem;
+    padding: 0;
+    width: 100%;
+  }
+  .header .header__nav-container .header__links .header__links-list .planet-name {
+    cursor: pointer;
+  }
+  .header .header__nav-container .header__links .header__links-list .planet-name::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0.4rem;
+    background: red;
+    top: -3.6rem;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  }
+  .header .header__nav-container .header__links .header__links-list .planet-name:hover::before {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  .header .header__nav-container .header__underline {
+    display: none;
+  }
+}
+
+.main .main__container .main__tabs {
+  padding: 2rem 3.7rem;
+  border-top: 1px solid rgba(151, 151, 151, 0.3);
+  border-bottom: 1px solid rgba(151, 151, 151, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main .main__container .main__tabs .main__tab {
+  position: relative;
+  font-family: 'Spartan', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.193rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.6;
+  cursor: pointer;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  background: transparent;
+  border: none;
+}
+
+.main .main__container .main__tabs .main__tab::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.4rem;
+  background: red;
+  top: 2.7rem;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.main .main__container .main__tabs .main__tab:hover {
+  opacity: 1;
+}
+
+.main .main__container .main__tabs .main__tab:hover::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.main .main__container .main__tabs.active {
+  display: none;
+}
+
+.main .main__container .main__tabs.hide-for-mobile {
+  display: none;
+}
+
+.main .main__container .main__hero {
+  display: none;
+  padding: 2.4rem;
+}
+
+.main .main__container .main__hero .main__img {
+  text-align: center;
+  padding-top: 9.8rem;
+  padding-bottom: 9.8rem;
+}
+
+.main .main__container .main__hero .main__img img {
+  height: 11.1rem;
+  margin: 0 auto;
+}
+
+.main .main__container .main__hero .main__img .main__img-child-mercury img {
+  height: 11.1rem;
+  margin: 0 auto;
+}
+
+.main .main__container .main__hero .main__img .main__img-child-surface > img {
+  height: 7rem;
+  margin: 0 auto;
+  margin-top: -3rem;
+  z-index: 100;
+}
+
+.main .main__container .main__hero .main__text {
+  text-align: center;
+}
+
+.main .main__container .main__hero .main__text .main__text-heading {
+  font-size: var(--heading-mobile);
+}
+
+.main .main__container .main__hero .main__text .main__text-paragraph {
+  font-family: 'Spartan', sans-serif;
+  line-height: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.main .main__container .main__hero .main__text .main__text-source {
+  font-family: 'Spartan', sans-serif;
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+  opacity: 0.4;
+  font-weight: 400;
+  top: -0.5rem;
+}
+
+.main .main__container .main__hero .main__text .main__text-source-link {
+  text-decoration: underline;
+  font-weight: 700;
+  cursor: pointer;
+  top: -0.5rem;
+  font-size: 1.2rem;
+}
+
+.main .main__container .main__hero .main__text .main__text-source-link > p {
+  font-size: 1.2rem;
+}
+
+.main .main__container .main__hero .main__table {
+  margin: 2.8rem 0;
+}
+
+.main .main__container .main__hero .main__table .main__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid rgba(151, 151, 151, 0.3);
+  padding: 1.05rem 2.3rem;
+  margin: 0.8rem 0;
+}
+
+.main .main__container .main__hero .main__table .main__item .main__item-title {
+  font-family: 'Spartan', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.6rem;
+  letter-spacing: 0.073rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.6;
+}
+
+.main .main__container .main__hero .main__table .main__item .main__item-info {
+  font-family: 'Antonio', sans-serif;
+  font-size: 2rem;
+  line-height: auto;
+  letter-spacing: -0.075rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.main .main__container .main__hero .main__table .main__item:first-child {
+  margin-top: 0;
+}
+
+.main .main__container .main__hero .main__table .main__item:last-child {
+  margin-bottom: 0;
+}
+
+.main .main__container .active {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .main .main__container .main__tabs {
+    display: none;
+    border: none;
+  }
+  .main .main__container .main__tabs .main__tab {
+    border: 1px solid rgba(151, 151, 151, 0.3);
+  }
+  .main .main__container .main__hero.active {
+    padding: 2.5rem 3.9rem;
+    display: -ms-grid;
+    display: grid;
+    justify-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-grid-columns: (3fr)[4];
+        grid-template-columns: repeat(4, 3fr);
+    -ms-grid-rows: 13fr 9fr 4fr;
+        grid-template-rows: 13fr 9fr 4fr;
+        grid-template-areas: "planet planet planet planet" "text text tabs tabs" "table table table table";
+  }
+  .main .main__container .main__hero.active .main__img {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-area: planet;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-column: 1/5;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    padding: 0;
+  }
+  .main .main__container .main__hero.active .main__img img {
+    height: 18.4rem;
+  }
+  .main .main__container .main__hero.active .main__text {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: text;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+    text-align: left;
+  }
+  .main .main__container .main__hero.active .main__text .main__text-heading {
+    font-size: var(--heading-secondary-tablet);
+  }
+  .main .main__container .main__hero.active .main__text .main__text-paragraph {
+    padding-right: 1rem;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile {
+    -ms-grid-row: 2;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 2;
+    grid-area: tabs;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 2;
+    grid-column: 3/5;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0;
+    border: none;
+    justify-self: end;
+    margin-top: 4rem;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab {
+    width: 28.1rem;
+    height: 4rem;
+    margin: 0.8rem 0;
+    line-height: 2.5rem;
+    text-align: left;
+    padding: 0 1.9rem;
+    color: --white;
+    opacity: 1;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab::before {
+    display: none;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab:hover {
+    background: rgba(216, 216, 216, 0.2);
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab:hover::before {
+    display: none;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab.active {
+    background: #419EBB;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab:first-child {
+    margin-top: 0;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab:last-child {
+    margin-bottom: 0;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .tab_number {
+    color: var(--white);
+    opacity: 0.6;
+    margin-right: 1.4rem;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .tab_title {
+    color: white;
+    opacity: 1;
+  }
+  .main .main__container .main__hero.active .main__table {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-area: table;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    width: 100%;
+    margin: 0;
+  }
+  .main .main__container .main__hero.active .main__table .main__item {
+    display: block;
+    width: 16.4rem;
+    height: 8.8rem;
+    margin: 2rem 0 0 0;
+    text-align: left;
+    padding: 1.8rem 1.5rem 2.1rem 1.5rem;
+  }
+  .main .main__container .main__hero.active .main__table .main__item .main__item-title {
+    margin-bottom: 0.5rem;
+  }
+  .main .main__container .main__hero.active .main__table .main__item .main__item-info {
+    font-size: 2.4rem;
+    letter-spacing: -0.09rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .main .main__container .main__hero.active {
+    padding: 8rem 16.5rem 5.6rem 16.5rem;
+    display: -ms-grid;
+    display: grid;
+    justify-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-grid-columns: (3fr)[4];
+        grid-template-columns: repeat(4, 3fr);
+    -ms-grid-rows: 4fr 2fr 2fr;
+        grid-template-rows: 4fr 2fr 2fr;
+        grid-template-areas: "planet planet text text" "planet planet tabs tabs" "table table table table";
+  }
+  .main .main__container .main__hero.active .main__img {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: planet;
+  }
+  .main .main__container .main__hero.active .main__img img {
+    height: 29rem;
+  }
+  .main .main__container .main__hero.active .main__text {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 2;
+    grid-area: text;
+    width: 35rem;
+    -ms-grid-column-align: end;
+        justify-self: end;
+  }
+  .main .main__container .main__hero.active .main__text .main__text-heading {
+    font-size: var(--heading);
+    margin-bottom: 3rem;
+  }
+  .main .main__container .main__hero.active .main__text .main__text-paragraph {
+    font-size: var(--paragraph);
+    line-height: 2.5rem;
+    padding: 0;
+    margin-bottom: 3rem;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile {
+    -ms-grid-row: 2;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 2;
+    grid-area: tabs;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab {
+    width: 35rem;
+    height: 4.8rem;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab::before {
+    display: none;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab:hover {
+    background: rgba(216, 216, 216, 0.2);
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab:hover::before {
+    display: none;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab.active {
+    background: #419EBB;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab:first-child {
+    margin-top: 0;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .main__tab:last-child {
+    margin-bottom: 0;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .tab_number {
+    color: var(--white);
+    opacity: 0.6;
+    margin-right: 1.4rem;
+    font-size: var(--heading-tertiary);
+    letter-spacing: 0.257rem;
+  }
+  .main .main__container .main__hero.active .main__tabs.hide-for-mobile .tab_title {
+    color: white;
+    opacity: 1;
+    font-size: var(--heading-tertiary);
+    letter-spacing: 0.257rem;
+  }
+  .main .main__container .main__hero.active .main__table {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-area: table;
+  }
+  .main .main__container .main__hero.active .main__table .main__item {
+    width: 25.5rem;
+    height: 12.8rem;
+    padding: 2.6rem 2.2rem;
+  }
+  .main .main__container .main__hero.active .main__table .main__item .main__item-title {
+    font-size: var(--heading-quarternary);
+    letter-spacing: 0.1rem;
+    line-height: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .main .main__container .main__hero.active .main__table .main__item .main__item-info {
+    font-size: var(--heading-secondary);
+    letter-spacing: -0.15rem;
+  }
+}
+/*# sourceMappingURL=styles.css.map */

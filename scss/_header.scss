@@ -1,0 +1,247 @@
+.header {
+    padding: 2.4rem;
+    .header__nav-container {
+        .header__nav-container-child {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            // border-bottom: 1px solid rgba(151, 151, 151, 0.3);
+            &.active {
+                display: none;
+            }
+            .header__logo {
+                font-family: 'Antonio', sans-serif;
+                font-size: 2.8rem;
+                letter-spacing: -0.105rem;
+                text-transform: uppercase;
+                &.active {
+                    z-index: 100;
+                }
+            }
+            .header__toggle {
+                height: 1.8rem;
+                &.active {
+                    color: #979797;
+                    opacity: 0.3;
+                    z-index: 100;
+                }
+            }
+        }
+        // mobile menu
+        .header__menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: $backgroundColor;
+            display: none;
+            overflow: hidden;
+            .header__menu-nav {
+                position: fixed;
+                width: 100%;
+                padding: 0 2.4rem 6.7rem 2.4rem;
+                top: 11.3rem;
+                .header__menu-item {
+                    display: grid;
+                    justify-items: start;
+                    align-items: center;
+                    grid-template-columns: 4fr 20fr 1.5fr;
+                    grid-template-rows: 1 1fr;
+                    grid-template-areas: "icon planet-name arrow";
+                    padding: 2.4rem 0;
+                    .planet-icon {
+                        position: relative;
+                        // background: red;
+                        width: 2rem;
+                        height: 2rem;
+                        border-radius: 90px;
+                        grid-area: icon;
+                    }
+                    #mercury {
+                        background: #DEF4FC;
+                    }
+                    #venus {
+                        background: #F7CC7F;
+                    }
+                    #earth {
+                        background: #545BFE;
+                    }
+                    #mars {
+                        background: #FF6A45;
+                    }
+                    #jupiter {
+                        background: #ECAD7A;
+                    }
+                    #saturn {
+                        background: #FCCB6B;
+                    }
+                    #uranus {
+                        background: #65F0D5;
+                    }
+                    #neptune {
+                        background: #497EFA;
+                    }
+                    .planet-name.mobile {
+                        grid-area: planet-name;
+                        font-family: 'Spartan', sans-serif;
+                        font-size: 1.5rem;
+                        line-height: 2.5rem;
+                        letter-spacing: 0.136rem;
+                        height: 2rem;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        justify-self: start;
+                    }
+                    .menu-arrow {
+                        width: 0.04rem;
+                        height: 0.08rem;
+                        border: solid #D8D8D8;
+                        border-width: 0 0.2rem 0.2rem 0;
+                        opacity: 0.5;
+                        display: inline-block;
+                        padding: 0.3rem;
+                        transform: rotate(-45deg);
+                        transition: transform 0.3s linear;
+                        background: none;
+                        cursor: pointer;
+                        grid-area: arrow;       
+                    }
+                }
+                .header__menu-item:first-child {
+                    padding-top: 0;
+                }
+                .header__menu-item:last-child {
+                    padding-bottom: 0;
+                }
+                .header__hr {
+                    width: 100%;
+                    height: 1px;
+                    background: #979797;
+                    opacity: 0.3;
+                }
+
+            }
+        }
+        .header__menu.active {
+            display: block;
+        }
+    }
+    .header__underline {
+        height: 1px;
+        width: 100%;
+        color: #979797;
+        opacity: 0.3;
+        display: none;
+        // having troubles displaying the underline in the mobile nav overlay
+        &.active {
+            z-index: 1000;
+            display: block;
+        }
+    }
+}
+
+
+
+// TABLET MEDIA QUERIES
+@media (min-width: 768px) {
+    .header {
+        padding: 2.9rem 2.4rem;
+        border-bottom: 1px solid rgba(151, 151, 151, 0.3);
+        .header__nav-container {
+            .header__nav-container-child {
+                text-align: center;
+                display: block;
+                border-bottom: none;
+            }
+            .header__logo {
+                margin: 0 auto;
+            }
+            .header__toggle {
+                display: none;
+            }
+        .header__links {
+            padding: 4rem 4rem 0 4rem;
+            display: block;
+            .header__links-list {
+                display: flex;
+                justify-content: space-between;
+                }
+                .planet-name {
+                    position: relative;
+                    font-family: 'Spartan', sans-serif;
+                    font-size: var(--heading-quarternary);
+                    line-height: 2.5rem;
+                    letter-spacing: 0.1rem;
+                    // height: 2rem;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    opacity: 0.6;
+                    &:hover {
+                        opacity: 1;
+                        transition: opacity ease-in-out 0.5s;
+                    }
+            }
+        }
+        .header__underline {
+            display: none;
+            width: 100%;
+            height: 0.1rem;
+            background: #979797;
+            opacity: 0.3;
+        }
+        }
+    }
+
+
+}
+
+// DESKTOP MEDIA QUERIES
+@media (min-width: 1300px) {
+    .header {
+        padding: 2.45rem 4rem 2.45rem 3.2rem;
+        .header__nav-container {
+            display: grid;
+            justify-items: start;
+            align-items: center;
+            grid-template-columns: 2fr 2fr;
+            grid-template-rows: 1 1fr;
+            // grid-template-areas: "logo planet-name";
+            // justify-content: space-between;
+            // align-items: center;
+            // .header__nav-container-child {
+            //     .header__logo {
+            //     }
+            // }
+            .header__links {
+                margin-bottom: -1rem;
+                padding: 0;
+                width: 100%;
+                .header__links-list {
+                    .planet-name {
+                        cursor: pointer;
+                        // finish the pseudo elements once I plug in json files
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 0.4rem;
+                            background: red;
+                            top: -3.6rem;
+                            transform: scaleX(0);
+                            transition: transform 0.3s ease;
+                        }
+                        &:hover {
+                            &::before {
+                                transform: scaleX(1);
+                            }
+                        }
+                    }       
+                }
+            }
+            .header__underline {
+                display: none;
+            }
+        }
+    }
+}
