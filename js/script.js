@@ -1,42 +1,107 @@
-// JSON DATA
-
-// You can only use Fetch API when trying to fetch external files outside of your machine, not local ones.
-// That's why you have to start a live server instead of developing using files from files:///
-
-// ./data.json -> an argument of the file location you want to access
-// const json = fetch('./data.json')
-    // returning a promise that resolves with a Response object. 
-//   .then(response => response.json())
-    // using json() method to extract the JSON body content from the Response
-    // second promise resolves with the result of parsing the response body text as JSON.
-//   .then(json => console.log(json));
-
-
-
-
 const venus = document.getElementById('planet-venus');
 
-const H1 = document.querySelector('.main__text-heading');
+const tabs = document.querySelectorAll('.main__tab');
+const mainContainer = document.querySelector('.main__container');
+const contents = document.querySelectorAll('.main__hero');
 
+const planets = {
+    0: "mercury",
+    1: "venus",
+    2: "earth",
+    3: "mars",
+    4: "jupiter",
+    5: "saturn",
+    6: "uranus",
+    7: "neptune"
+}
 
-venus.addEventListener('click', () => {
-    async function populate() {
-        const response = await fetch('./data.json');
-        const planetsJson = await response.json();
-    
-        populateH1(planetsJson);
+let data;
+
+async function fetchJson() {
+    if (typeof data === 'undefined') {
+        const dirtyJson = await fetch('./data.json');
+        console.log(dirtyJson);
+        let parsedJson = await dirtyJson.json();
+        console.log(parsedJson);
+        data = parsedJson;
+        console.log(data);
+
+        testFunction();
     }
+    else {
+        testFunction();
+    }
+}
 
-    populate();
-})
+fetchJson();
 
 
-function populateH1(obj) {
-    const mainTextContainer = document.querySelector('.main__text');
+function testFunction () {
+    console.log('heyoooooooo');
+    console.log(data[0]);
+}
+
+// var data2;
+
+// function fetchData() {
+//     if(typeof data2 === "undefined") {
+//         fetch('data.json')
+//         .then(response => 
+//             response.json())
+//         .then(json => {
+//             console.log(json);
+//             data2 = json;
+//             console.log(data2);
+//             displayInfo();
+//         });
+//     }
+//     else displayInfo();
+// }
+
+// fetchData();
+// console.log(data2);
+
+
+
+// venus.addEventListener('click', () => {
+//     async function populate() {
+//         const response = await fetch('./data.json');
+//         const planetsJson = await response.json();
+
+//         populateVenusOverview(planetsJson);
+
+//         mainContainer.addEventListener('click', (e) => {
+//             const id = e.target.dataset.id;
+            
+//             if (id === 'structure') {
+//                 tabs.forEach(btn => {
+//                     btn.classList.remove('active');
+//                     e.target.classList.add('active');
+//                 })
+            
+//                 contents.forEach(content => {
+//                     content.classList.remove('active');
+//                 })
+            
+//                 const element = document.getElementById(id);
+//                 element.classList.add('active');
+    
+//                 populateVenusStructure(planetsJson);
+//             }
+//         }) 
+//     }
+//     populate();
+// })
+
+
+
+function populateVenusOverview(obj) {
+    const planetImage = document.querySelector('.planet-img');
+
+    planetImage.src = obj[1]['images']['planet'];
 
     const mainH1 = document.querySelector('.main__text-heading');
     const mainParagraph = document.querySelector('.main__text-paragraph');
-    const mainTextSource = document.querySelector('.main__text-source');
 
     const sourceLink = document.querySelector('.main__text-source-link');
 
@@ -45,24 +110,75 @@ function populateH1(obj) {
     sourceLink.href = obj[1]['overview']['source'];
     // OR sourceLink.setAttribute('href', obj[1]['overview']['source']);
 
-    mainTextContainer.appendChild(mainH1);
-    mainTextContainer.appendChild(mainParagraph);
-    mainTextContainer.appendChild(mainTextSource);
+
+    const informationCard1 = document.querySelector('.main__item-info-1')
+    const informationCard2 = document.querySelector('.main__item-info-2')
+    const informationCard3 = document.querySelector('.main__item-info-3')
+    const informationCard4 = document.querySelector('.main__item-info-4')
+
+    informationCard1.textContent = obj[1]['rotation']
+    informationCard2.textContent = obj[1]['revolution']
+    informationCard3.textContent = obj[1]['radius']
+    informationCard4.textContent = obj[1]['temperature']
+}
+
+function populateVenusStructure(obj) {
+    const planetImage = document.querySelector('.planet-img');
+    planetImage.src = obj[1]['images']['internal'];
+
+
+    const mainH1 = document.querySelector('.main__text-heading');
+    const mainParagraph = document.querySelector('.main__text-paragraph');
+
+    const sourceLink = document.querySelector('.main__text-source-link');
+
+    mainH1.textContent = obj[1]['name'];
+    mainParagraph.textContent = obj[1]['structure']['content'];
+    sourceLink.href = obj[1]['structure']['source'];
+    // OR sourceLink.setAttribute('href', obj[1]['overview']['source']);
+
+
+    const informationCard1 = document.querySelector('.main__item-info-1')
+    const informationCard2 = document.querySelector('.main__item-info-2')
+    const informationCard3 = document.querySelector('.main__item-info-3')
+    const informationCard4 = document.querySelector('.main__item-info-4')
+
+    informationCard1.textContent = obj[1]['rotation']
+    informationCard2.textContent = obj[1]['revolution']
+    informationCard3.textContent = obj[1]['radius']
+    informationCard4.textContent = obj[1]['temperature']
 }
 
 
 
+// mainContainer.addEventListener('click', (e) => {
+//     const id = e.target.dataset.id;
+    
+//     if (id) {
+//         tabs.forEach(btn => {
+//             btn.classList.remove('active');
+//             e.target.classList.add('active');
+//         })
+    
+//         contents.forEach(content => {
+//             content.classList.remove('active');
+//         })
+    
+//         const element = document.getElementById(id);
+//         element.classList.add('active');
+//     }
+    
+
+// })    
 
 
-// hamburger menu toggle
+
+
 const hamburger = document.querySelector('.header__toggle');
 const navUl = document.querySelector('.header__menu');
 const logo = document.querySelector('.header__logo');
 const mainTabs = document.querySelector('.main__tabs');
 const hero = document.querySelector('.main__hero');
-
-
-
 
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
@@ -74,34 +190,3 @@ hamburger.addEventListener('click', () => {
 })
 
 
-// planet pseudo elements
-// const planetUnderline = document.querySelectorAll('.planet-name'), ':after';
-
-// planetUnderline.addEventListener('click', () => {
-//     console.log("whatsuppppp");
-// })
-
-
-
-// tabs -> having troubles with tablet/desktop setup
-const tabs = document.querySelectorAll('.main__tab');
-const mainContainer = document.querySelector('.main__container');
-const contents = document.querySelectorAll('.main__hero');
-
-mainContainer.addEventListener('click', (e) => {
-    const id = e.target.dataset.id;
-
-    if (id) {
-        tabs.forEach(btn => {
-            btn.classList.remove('active');
-            e.target.classList.add('active');
-        })
-
-        contents.forEach(content => {
-            content.classList.remove('active');
-        })
-
-        const element = document.getElementById(id);
-        element.classList.add('active');
-    }
-})
