@@ -13,15 +13,6 @@
 
 
 
-// planets
-
-// const heroContainer = document.querySelector('.main__text-source-link');
-// console.log(heroContainer.href);
-
-// const heroContainerBig = heroContainer.href;
-
-// console.log(heroContainerBig);
-
 
 const venus = document.getElementById('planet-venus');
 
@@ -43,30 +34,20 @@ venus.addEventListener('click', () => {
 function populateH1(obj) {
     const mainTextContainer = document.querySelector('.main__text');
 
-
     const mainH1 = document.querySelector('.main__text-heading');
     const mainParagraph = document.querySelector('.main__text-paragraph');
+    const mainTextSource = document.querySelector('.main__text-source');
+
     const sourceLink = document.querySelector('.main__text-source-link');
-
-    // const sourceLinkReal = sourceLink.href;
-    // const sourceName = document.getElementById('main__text-source-link-name');
-
 
     mainH1.textContent = obj[1]['name'];
     mainParagraph.textContent = obj[1]['overview']['content'];
-    sourceLink.innerHTML = obj[1]['overview']['source'];
-    // sourceName.textContent = obj[1]['name'];
-
-    
-    sourceLinkWhatsup = sourceLink.innerHTML = obj[1]['overview']['source'];
-
-    console.log(sourceLinkWhatsup);
+    sourceLink.href = obj[1]['overview']['source'];
+    // OR sourceLink.setAttribute('href', obj[1]['overview']['source']);
 
     mainTextContainer.appendChild(mainH1);
     mainTextContainer.appendChild(mainParagraph);
-    mainTextContainer.setAttribute('href', sourceLink);
-    // mainTextContainer.appendChild('Wikipediaasadfasdf');
-
+    mainTextContainer.appendChild(mainTextSource);
 }
 
 
