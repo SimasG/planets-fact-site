@@ -826,7 +826,7 @@ ul, li {
     padding: 2.6rem 2.2rem;
   }
   .main .main__container .main__hero.active .main__table .main__item .main__item-title {
-    font-size: var(--heading-quarternary);
+    font-size: 1.1rem;
     letter-spacing: 0.1rem;
     line-height: 2.5rem;
     margin-bottom: 1rem;
