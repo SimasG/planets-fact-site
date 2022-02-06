@@ -65,7 +65,7 @@
           
             <li class= "header__menu-item" onClick="planetHandler(0)">
               <div class="planet-icon" id="mercury"></div>
-              <a href="./" class="planet-name mobile" id="planet-mercury">Mercury</a>
+              <a class="planet-name mobile" id="planet-mercury">Mercury</a>
               <div class="menu-arrow">
               </div>
             </li>
@@ -73,8 +73,8 @@
             <div class="header__hr"></div>
             
             <li class= "header__menu-item" onClick="planetHandler(1)">
-              <div class="planet-icon venus" id="venus"></div>
-              <a href="./" class="planet-name mobile" id="planet-venus">Venus</a>
+              <div class="planet-icon venus blet" id="venus"></div>
+              <a class="planet-name mobile" id="planet-venus">Venus</a>
               <div class="menu-arrow"></div>
             </li>
   
@@ -82,7 +82,7 @@
             
             <li class= "header__menu-item" onClick="planetHandler(2)">
               <div class="planet-icon earth" id="earth"></div>
-              <a href="./" class="planet-name mobile" id="planet-earth">Earth</a>
+              <a class="planet-name mobile" id="planet-earth">Earth</a>
               <div class="menu-arrow"></div>
             </li>
   
@@ -90,7 +90,7 @@
             
             <li class= "header__menu-item" onClick="planetHandler(3)">
               <div class="planet-icon mars" id="mars"></div>
-              <a href="./" class="planet-name mobile" id="planet-mars">Mars</a>
+              <a class="planet-name mobile" id="planet-mars">Mars</a>
               <div class="menu-arrow"></div>
             </li>
   
@@ -98,7 +98,7 @@
             
             <li class= "header__menu-item" onClick="planetHandler(4)">
               <div class="planet-icon jupiter" id="jupiter"></div>
-              <a href="./" class="planet-name mobile" id="planet-jupiter">Jupiter</a>
+              <a class="planet-name mobile" id="planet-jupiter">Jupiter</a>
               <div class="menu-arrow"></div>
             </li>
   
@@ -106,7 +106,7 @@
             
             <li class= "header__menu-item" onClick="planetHandler(5)">
               <div class="planet-icon saturn" id="saturn"></div>
-              <a href="./" class="planet-name mobile" id="planet-saturn">Saturn</a>
+              <a class="planet-name mobile" id="planet-saturn">Saturn</a>
               <div class="menu-arrow"></div>
             </li>
   
@@ -114,7 +114,7 @@
   
             <li class= "header__menu-item" onClick="planetHandler(6)">
               <div class="planet-icon uranus" id="uranus"></div>
-              <a href="./" class="planet-name mobile" id="planet-uranus">Uranus</a>
+              <a class="planet-name mobile" id="planet-uranus">Uranus</a>
               <div class="menu-arrow"></div>
             </li>
             
@@ -122,7 +122,7 @@
             
             <li class= "header__menu-item" onClick="planetHandler(7)">
               <div class="planet-icon neptune" id="neptune"></div>
-              <a href="./" class="planet-name mobile" id="planet-neptune">Neptune</a>
+              <a class="planet-name mobile" id="planet-neptune">Neptune</a>
               <div class="menu-arrow"></div>
             </li>
   
@@ -136,14 +136,15 @@
   <section class="main">
     <div class="main__container">
       <div class="main__tabs">
-          <button class="main__tab overview" data-id="overview" onClick="overviewHandler()">Overview</button>  
-          <button class="main__tab structure" data-id="structure" onClick="structureHandler()">Structure</button>  
-          <button class="main__tab surface" data-id="surface" onClick="surfaceHandler()">Surface</button>  
+          <button class="main__tab overview-mobile" data-id="overview" onClick="overviewHandler()">Overview</button>  
+          <button class="main__tab structure-mobile" data-id="structure" onClick="structureHandler()">Structure</button>  
+          <button class="main__tab surface-mobile" data-id="surface" onClick="surfaceHandler()">Surface</button>  
       </div>
 
       <div class="main__hero active">
         <div class="main__img">
-          <img class="planet-img" src="./assets/planet-mercury.svg" alt="Mercury">
+          <!-- <img class="planet-img" src="./assets/planet-mercury.svg" alt="Mercury"> -->
+          <div class="planet-img"></div>
         </div>
         <div class="main__text">
           <h1 class="main__text-heading">Mercury</h1>
@@ -161,9 +162,9 @@
         </div>
 
         <div class="main__tabs hide-for-mobile">
-            <button class="main__tab active overview" data-id="overview" onClick="overviewHandler()"><span class="tab_number">01</span><span class="tab_title">Overview</span></button>  
-            <button class="main__tab structure" data-id="structure" onClick="overviewHandler()"><span class="tab_number">02</span><span class="tab_title">Structure</span></button>  
-            <button class="main__tab surface" data-id="surface" onClick="overviewHandler()"><span class="tab_number">03</span><span class="tab_title">Surface</span></button>  
+            <button class="main__tab overview" data-id="overview" onClick="overviewHandler()"><span class="tab_number">01</span><span class="tab_title">Overview</span></button>  
+            <button class="main__tab structure" data-id="structure" onClick="structureHandler()"><span class="tab_number">02</span><span class="tab_title">Structure</span></button>  
+            <button class="main__tab surface" data-id="surface" onClick="surfaceHandler()"><span class="tab_number">03</span><span class="tab_title">Surface</span></button>  
         </div>
 
         <section class="main__table">
@@ -188,7 +189,8 @@
 
       <div class="main__hero">
         <div class="main__img">
-          <img src="./assets/planet-mercury-internal.svg" alt="Mercury structure">
+          <!-- <img class="planet-img" src="./assets/planet-mercury-internal.svg" alt="Mercury structure"> -->
+          <div class="planet-img"></div>
         </div>
         <div class="main__text">
           <h1 class="main__text-heading">Mercury</h1>
@@ -206,14 +208,9 @@
         </div>
 
         <div class="main__tabs hide-for-mobile">
-          <!-- <ul>
-            <li class="main__tab active" data-id="overview"><a>Overview</a></li>  
-            <li class="main__tab" data-id="structure"><a>Structure</a></li>  
-            <li class="main__tab" data-id="surface"><a>Surface</a></li>  
-          </ul> -->
-          <button class="main__tab active" data-id="overview"><span class="tab_number">01</span><span class="tab_title">Overview</span></button>  
-          <button class="main__tab" data-id="structure"><span class="tab_number">02</span><span class="tab_title">Structure</span></button>  
-          <button class="main__tab" data-id="surface"><span class="tab_number">03</span><span class="tab_title">Surface</span></button>  
+          <button class="main__tab active"><span class="tab_number">01</span><span class="tab_title">Overview</span></button>  
+          <button class="main__tab"><span class="tab_number">02</span><span class="tab_title">Structure</span></button>  
+          <button class="main__tab"><span class="tab_number">03</span><span class="tab_title">Surface</span></button>  
       </div>
 
         <section class="main__table">
@@ -238,12 +235,14 @@
 
       <div class="main__hero">
         <div class="main__img">
-          <div class="main__img-child-mercury">
-            <img src="./assets/planet-mercury.svg" alt="Mercury">
+          <div class="planet-img"></div>
+          <!-- <div class="main__img-child-mercury">
+            <img class="planet-img" src="./assets/planet-mercury.svg" alt="Mercury">
+            <div class="planet-img"></div>
           </div>
           <div class="main__img-child-surface">
-            <img src="./assets/geology-mercury.png" alt="Mercury surface">
-          </div>
+            <img class="geology-img" src="./assets/geology-mercury.png" alt="Mercury surface">
+          </div> -->
         </div>
         <div class="main__text">
           <h1 class="main__text-heading">Mercury</h1>

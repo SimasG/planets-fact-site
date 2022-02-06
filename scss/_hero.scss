@@ -46,24 +46,31 @@
         .main__hero {
             display: none;
             padding: 2.4rem;
+            position: relative;
             .main__img {
                 text-align: center;
                 padding-top: 9.8rem;
                 padding-bottom: 9.8rem;
+                margin: 0 auto;
                 img {
                     height: 11.1rem;
+                    width: 11.1rem;
                     margin: 0 auto;
+                    .planet-img {
+                        text-align: center;
+                        margin: 0 auto;
+                    }
                 }
-                .main__img-child-mercury img {
-                    height: 11.1rem;
-                    margin: 0 auto; 
-                }
-                .main__img-child-surface > img {
-                    height: 7rem;
-                    margin: 0 auto;
-                    margin-top: -3rem;
-                    z-index: 100;
-                }
+                // .main__img-child-mercury img {
+                //     height: 11.1rem;
+                //     margin: 0 auto; 
+                // }
+                // .main__img-child-surface > img {
+                //     height: 7rem;
+                //     margin: 0 auto;
+                //     margin-top: -3rem;
+                //     z-index: 100;
+                // }
             }
             .main__text {
                 text-align: center;

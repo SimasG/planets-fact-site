@@ -2,9 +2,13 @@ const tabs = document.querySelectorAll('.main__tab');
 const mainContainer = document.querySelector('.main__container');
 const contents = document.querySelectorAll('.main__hero');
 
+const menuBtnMobile = document.querySelector('.blet');
+
 const planetName = document.querySelector('.main__text-heading');
 const planetImage = document.querySelector('.planet-img');
 const planetDescription = document.querySelector('.main__text-paragraph');
+// const geologyImage = document.querySelector('.geology-img');
+
 const rotation = document.querySelector('.main__item-info-1')
 const revolution = document.querySelector('.main__item-info-2')
 const radius = document.querySelector('.main__item-info-3')
@@ -12,7 +16,7 @@ const temperature = document.querySelector('.main__item-info-4')
 
 const overview = document.querySelector('.overview');
 const structure = document.querySelector('.structure');
-const geology = document.querySelector('.surface');
+const surface = document.querySelector('.surface');
 
 const sourceLink = document.querySelector('.main__text-source-link');
 const vw = document.documentElement.clientWidth;
@@ -65,8 +69,56 @@ const geologySize = {
 let currentPlanet = 0;
 let currentState = 'overview';
 
-fetchData();
-changeBtn();
+
+planetHandler = (inputPlanet) => {
+    currentPlanet = inputPlanet;
+    currentState = 'overview';
+    fetchData();
+    changeBtn();
+}
+
+overviewHandler = () => {
+    currentState = 'overview';
+    fetchData();
+    changeBtn();
+}
+
+structureHandler = () => {
+    currentState = 'structure';
+    fetchData();
+    changeBtn();
+}
+
+surfaceHandler = () => {
+    currentState = 'surface';
+    fetchData();
+    changeBtn();
+}
+
+changeBtn = () => {
+    if (currentState == 'overview') {
+        overview.style.backgroundColor = `#${btnColors[currentPlanet]}`;
+        structure.style.backgroundColor = 'transparent';
+        surface.style.backgroundColor = 'transparent';
+    }   else if (currentState == 'structure') {
+        overview.style.backgroundColor = 'transparent';
+        structure.style.backgroundColor = `#${btnColors[currentPlanet]}`;
+        surface.style.backgroundColor = 'transparent';        
+    } else {
+        overview.style.backgroundColor = 'transparent';
+        structure.style.backgroundColor = 'transparent';
+        surface.style.backgroundColor = `#${btnColors[currentPlanet]}`;
+    }
+}
+
+// hoverEffect = (this) => {
+//     this.style.backgroundColor = '#d8d8d8';
+// }
+
+// noHoverEffect = (this) => {
+//     this.style.backgroundColor = 'transparent';
+// }
+
 
 let data;
 
@@ -83,124 +135,94 @@ async function fetchData() {
     }
 }
 
-planetHandler = (inputPlanet) => {
-    currentPlanet = inputPlanet;
-    currentState = 'overview';
-    fetchData();
-    changeBtn();
-}
-
-overviewHandler = () => {
-    currentState = 'overview';
-    fetchData();
-    changeBtn();
-}
-
-structureHandler = () => {
-    currentState = 'overview';
-    fetchData();
-    changeBtn();
-}
-
-surfaceHandler = () => {
-    currentState = 'overview';
-    fetchData();
-    changeBtn();
-}
-
-changeBtn = () => {
-    
-}
-
-
-
+fetchData();
+changeBtn();
 
 displayInfo = () => {
-    const planetImage = document.querySelector('.planet-img');
-
-    planetImage.src = obj[currentPlanet]['images']['planet'];
-
-    const planetName = document.querySelector('.main__text-heading');
-    const mainParagraph = document.querySelector('.main__text-paragraph');
-
-    const sourceLink = document.querySelector('.main__text-source-link');
-
-    planetName.textContent = obj[currentPlanet]['name'];
-    mainParagraph.textContent = obj[currentPlanet]['overview']['content'];
-    sourceLink.href = obj[currentPlanet]['overview']['source'];
+    planetName.textContent = data[currentPlanet]['name'];
     // OR sourceLink.setAttribute('href', obj[1]['overview']['source']);
 
+    rotation.textContent = data[currentPlanet]['rotation']
+    revolution.textContent = data[currentPlanet]['revolution']
+    radius.textContent = data[currentPlanet]['radius']
+    temperature.textContent = data[currentPlanet]['temperature']
 
-    const informationCard1 = document.querySelector('.main__item-info-1')
-    const informationCard2 = document.querySelector('.main__item-info-2')
-    const informationCard3 = document.querySelector('.main__item-info-3')
-    const informationCard4 = document.querySelector('.main__item-info-4')
+    if (currentState == 'overview') {
+        planetImage.style.background = `url('./assets/planet-${planets[currentPlanet]}.svg')`;
+        planetImage.style.backgroundRepeat = "no-repeat";
+        planetImage.style.backgroundPosition = "center";
+        planetDescription.textContent = data[currentPlanet]['overview']['content'];
+        sourceLink.href = data[currentPlanet]['overview']['source'];
+        
+        if (vw > 1300) {
+            planetImage.style.backgroundSize = `${planetSize[currentPlanet].large}`, `${planetSize[currentPlanet].large}`;
+            planetImage.style.height = `${planetSize[currentPlanet].large}`;
+            planetImage.style.width = `${planetSize[currentPlanet].large}`;
+        }   else if (vw <= 1300 && vw > 768) {
+            planetImage.style.backgroundSize = `${planetSize[currentPlanet].medium}`, `${planetSize[currentPlanet].medium}`;
+            planetImage.style.height = `${planetSize[currentPlanet].medium}`;
+            planetImage.style.width = `${planetSize[currentPlanet].medium}`;
+        } else {
+            planetImage.style.backgroundSize = `${planetSize[currentPlanet].small}`, `${planetSize[currentPlanet].small}`;
+            planetImage.style.height = `${planetSize[currentPlanet].small}`;
+            planetImage.style.width = `${planetSize[currentPlanet].small}`;
+            planetImage.style.margin = '0 auto';  
+        }
 
-    informationCard1.textContent = obj[currentPlanet]['rotation']
-    informationCard2.textContent = obj[currentPlanet]['revolution']
-    informationCard3.textContent = obj[currentPlanet]['radius']
-    informationCard4.textContent = obj[currentPlanet]['temperature']
+    } else if (currentState == 'structure') {
+        planetImage.style.background = `url('./assets/planet-${planets[currentPlanet]}-internal.svg')`;
+        planetImage.style.backgroundRepeat = "no-repeat";
+        planetImage.style.backgroundPosition = "center";
+        planetDescription.textContent = data[currentPlanet]['structure']['content'];
+        sourceLink.href = data[currentPlanet]['structure']['source'];
+
+        if (vw > 1300) {
+            planetImage.style.backgroundSize = `${planetSize[currentPlanet].large}`, `${planetSize[currentPlanet].large}`;
+            planetImage.style.height = `${planetSize[currentPlanet].large}`;
+            planetImage.style.width = `${planetSize[currentPlanet].large}`;
+        }   else if (vw <= 1300 && vw > 768) {
+            planetImage.style.backgroundSize = `${planetSize[currentPlanet].medium}`, `${planetSize[currentPlanet].medium}`;
+            planetImage.style.height = `${planetSize[currentPlanet].medium}`;
+            planetImage.style.width = `${planetSize[currentPlanet].medium}`;
+        } else {
+            planetImage.style.backgroundSize = `${planetSize[currentPlanet].small}`, `${planetSize[currentPlanet].small}`;
+            planetImage.style.height = `${planetSize[currentPlanet].small}`;
+            planetImage.style.width = `${planetSize[currentPlanet].small}`;
+            planetImage.style.margin = '0 auto';  
+        }        
+    } else {
+        planetImage.style.background = `url('./assets/geology-${planets[currentPlanet]}.png'), url('./assets/planet-${planets[currentPlanet]}.svg')`;
+        planetImage.style.backgroundRepeat = "no-repeat, no-repeat";
+        planetImage.style.backgroundPosition = "50% 100%, center";
+        planetDescription.textContent = data[currentPlanet]['geology']['content'];
+        sourceLink.href = data[currentPlanet]['geology']['source'];
+
+        if (vw > 1300) {
+            planetImage.style.backgroundSize = `${geologySize.large}, ${planetSize[currentPlanet].large} ${planetSize[currentPlanet].large}`;
+            planetImage.style.height = `${planetSize[currentPlanet].large}`;
+            planetImage.style.width = `${planetSize[currentPlanet].large}`;
+        }   else if (vw <= 1300 && vw > 768) {
+            planetImage.style.backgroundSize = `${geologySize.medium}, ${planetSize[currentPlanet].medium} ${planetSize[currentPlanet].medium}`;
+            planetImage.style.height = `${planetSize[currentPlanet].medium}`;
+            planetImage.style.width = `${planetSize[currentPlanet].medium}`;
+        } else {
+            planetImage.style.backgroundSize = `${geologySize.small}, ${planetSize[currentPlanet].small} ${planetSize[currentPlanet].small}`;
+            planetImage.style.height = `${planetSize[currentPlanet].small}`;
+            planetImage.style.width = `${planetSize[currentPlanet].small}`;
+            planetImage.style.margin = '0 auto';   
+        }
+    }
 }
 
 
-
-
-
-// function populateVenusOverview(obj) {
-//     const planetImage = document.querySelector('.planet-img');
-
-//     planetImage.src = obj[1]['images']['planet'];
-
-//     const mainH1 = document.querySelector('.main__text-heading');
-//     const mainParagraph = document.querySelector('.main__text-paragraph');
-
-//     const sourceLink = document.querySelector('.main__text-source-link');
-
-//     mainH1.textContent = obj[1]['name'];
-//     mainParagraph.textContent = obj[1]['overview']['content'];
-//     sourceLink.href = obj[1]['overview']['source'];
-//     // OR sourceLink.setAttribute('href', obj[1]['overview']['source']);
-
-
-//     const informationCard1 = document.querySelector('.main__item-info-1')
-//     const informationCard2 = document.querySelector('.main__item-info-2')
-//     const informationCard3 = document.querySelector('.main__item-info-3')
-//     const informationCard4 = document.querySelector('.main__item-info-4')
-
-//     informationCard1.textContent = obj[1]['rotation']
-//     informationCard2.textContent = obj[1]['revolution']
-//     informationCard3.textContent = obj[1]['radius']
-//     informationCard4.textContent = obj[1]['temperature']
-// }
-
-// function populateVenusStructure(obj) {
-//     const planetImage = document.querySelector('.planet-img');
-//     planetImage.src = obj[1]['images']['internal'];
-
-
-//     const mainH1 = document.querySelector('.main__text-heading');
-//     const mainParagraph = document.querySelector('.main__text-paragraph');
-
-//     const sourceLink = document.querySelector('.main__text-source-link');
-
-//     mainH1.textContent = obj[1]['name'];
-//     mainParagraph.textContent = obj[1]['structure']['content'];
-//     sourceLink.href = obj[1]['structure']['source'];
-//     // OR sourceLink.setAttribute('href', obj[1]['overview']['source']);
-
-
-//     const informationCard1 = document.querySelector('.main__item-info-1')
-//     const informationCard2 = document.querySelector('.main__item-info-2')
-//     const informationCard3 = document.querySelector('.main__item-info-3')
-//     const informationCard4 = document.querySelector('.main__item-info-4')
-
-//     informationCard1.textContent = obj[1]['rotation']
-//     informationCard2.textContent = obj[1]['revolution']
-//     informationCard3.textContent = obj[1]['radius']
-//     informationCard4.textContent = obj[1]['temperature']
-// }
-
-
+menuBtnMobile.addEventListener('click', () => {
+    console.log('eyoooooo')
+    hamburger.classList.remove('active');
+    navUl.classList.remove('active');
+    logo.classList.remove('active');
+    mainTabs.classList.remove('active');
+    hero.classList.remove('active');
+})
 
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
@@ -208,25 +230,4 @@ hamburger.addEventListener('click', () => {
     logo.classList.toggle('active');
     mainTabs.classList.toggle('active');
     hero.classList.toggle('active');
-
 })
-
-
-
-mainContainer.addEventListener('click', (e) => {
-    const id = e.target.dataset.id;
-    
-    if (id) {
-        tabs.forEach(btn => {
-            btn.classList.remove('active');
-            e.target.classList.add('active');
-        })
-    
-        contents.forEach(content => {
-            content.classList.remove('active');
-        })
-    
-        const element = document.getElementById(id);
-        element.classList.add('active');
-    }
-}) 
