@@ -2,12 +2,11 @@ const tabs = document.querySelectorAll('.main__tab');
 const mainContainer = document.querySelector('.main__container');
 const contents = document.querySelectorAll('.main__hero');
 
-const menuBtnMobile = document.querySelector('.blet');
+const menuBtnMobile = document.querySelectorAll('.header__menu-item');
 
 const planetName = document.querySelector('.main__text-heading');
 const planetImage = document.querySelector('.planet-img');
 const planetDescription = document.querySelector('.main__text-paragraph');
-// const geologyImage = document.querySelector('.geology-img');
 
 const rotation = document.querySelector('.main__item-info-1')
 const revolution = document.querySelector('.main__item-info-2')
@@ -17,6 +16,10 @@ const temperature = document.querySelector('.main__item-info-4')
 const overview = document.querySelector('.overview');
 const structure = document.querySelector('.structure');
 const surface = document.querySelector('.surface');
+const overviewMobile = document.querySelector('.overview-mobile');
+const structureMobile = document.querySelector('.structure-mobile');
+const surfaceMobile = document.querySelector('.surface-mobile');
+
 
 const sourceLink = document.querySelector('.main__text-source-link');
 const vw = document.documentElement.clientWidth;
@@ -68,42 +71,53 @@ const geologySize = {
 
 let currentPlanet = 0;
 let currentState = 'overview';
+let currentStateMobile = 'overview-mobile';
 
 
 planetHandler = (inputPlanet) => {
     currentPlanet = inputPlanet;
     currentState = 'overview';
+    currentStateMobile = 'overview-mobile'
     fetchData();
     changeBtn();
 }
 
 overviewHandler = () => {
     currentState = 'overview';
+    currentStateMobile = 'overview-mobile'
     fetchData();
     changeBtn();
 }
 
 structureHandler = () => {
     currentState = 'structure';
+    currentStateMobile = 'structure-mobile'
     fetchData();
     changeBtn();
 }
 
 surfaceHandler = () => {
     currentState = 'surface';
+    currentStateMobile = 'surface-mobile'
     fetchData();
     changeBtn();
 }
 
 changeBtn = () => {
-    if (currentState == 'overview') {
+    if (currentState == 'overview' || currentStateMobile == 'overview-mobile') {
         overview.style.backgroundColor = `#${btnColors[currentPlanet]}`;
         structure.style.backgroundColor = 'transparent';
         surface.style.backgroundColor = 'transparent';
+
+        overviewMobile.style.setProperty("--test-color", `#${btnColors[currentPlanet]}`);
+        structureMobile.style.setProperty("--test-color", `#${btnColors[currentPlanet]}`);
+        surfaceMobile.style.setProperty("--test-color", `#${btnColors[currentPlanet]}`);
+        
     }   else if (currentState == 'structure') {
         overview.style.backgroundColor = 'transparent';
         structure.style.backgroundColor = `#${btnColors[currentPlanet]}`;
-        surface.style.backgroundColor = 'transparent';        
+        surface.style.backgroundColor = 'transparent';
+
     } else {
         overview.style.backgroundColor = 'transparent';
         structure.style.backgroundColor = 'transparent';
@@ -214,20 +228,24 @@ displayInfo = () => {
     }
 }
 
+// hoverHandler = (x) => {
+//     x.style.backgroundColor = '#d8d8d8';
+// }
 
-menuBtnMobile.addEventListener('click', () => {
-    console.log('eyoooooo')
-    hamburger.classList.remove('active');
-    navUl.classList.remove('active');
-    logo.classList.remove('active');
-    mainTabs.classList.remove('active');
-    hero.classList.remove('active');
-})
+for (let i = 0 ; i < menuBtnMobile.length; i++) {
+    menuBtnMobile[i].addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navUl.classList.remove('active');
+        logo.classList.remove('active');
+        mainTabs.classList.remove('active');
+        hero.classList.add('active');
+    }); 
+ }
 
 hamburger.addEventListener('click', () => {
+    logo.classList.toggle('active');
     hamburger.classList.toggle('active');
     navUl.classList.toggle('active');
-    logo.classList.toggle('active');
     mainTabs.classList.toggle('active');
     hero.classList.toggle('active');
 })

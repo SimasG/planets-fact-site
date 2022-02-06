@@ -227,7 +227,7 @@
                             width: 100%;
                             height: 0.4rem;
                             background: red;
-                            top: -3.6rem;
+                            top: -4rem;
                             transform: scaleX(0);
                             transition: transform 0.3s ease;
                         }
@@ -236,7 +236,47 @@
                                 transform: scaleX(1);
                             }
                         }
-                    }       
+                    }
+                    #planet-mercury {
+                        &::before {
+                            background: #419EBB;
+                        }
+                    }
+                    #planet-venus {
+                        &::before {
+                            background: #EDA249;
+                        }
+                    }
+                    #planet-earth {
+                        &::before {
+                            background: #6D2ED5;
+                        }
+                    }
+                    #planet-mars {
+                        &::before {
+                            background: #D14C32;
+                        }
+                    }
+                    #planet-jupiter {
+                        &::before {
+                            background: #D83A34;
+                        }
+                    }
+                    #planet-saturn {
+                        &::before {
+                            background: #CD5120;
+                        }
+                    }
+                    #planet-uranus {
+                        &::before {
+                            background: #1EC1A2;
+                        }
+                    }
+                    #planet-neptune {
+                        &::before {
+                            background: #2D68F0;
+                        }
+                    }   
                 }
             }
             .header__underline {
